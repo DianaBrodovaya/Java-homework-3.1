@@ -62,7 +62,7 @@ class RadioTest {
     }
 
     @Test
-    void shouldSwitchToStartStation(){
+    void shouldSwitchToStartStation() {
         Radio radio = new Radio();
         radio.setStation(Radio.MAX_STATION);
         radio.nextStation();
@@ -70,7 +70,7 @@ class RadioTest {
     }
 
     @Test
-    void shouldSwitchToEndStation(){
+    void shouldSwitchToEndStation() {
         Radio radio = new Radio();
         radio.setStation(Radio.MIN_STATION);
         radio.previousStation();
@@ -80,14 +80,36 @@ class RadioTest {
     @Test
     void shouldSetStation() {
         Radio radio = new Radio();
-        int testStation = 5;
+        int testStation = 6;
         radio.setStation(testStation);
-        assertEquals(testStation,radio.getStation());
+        assertEquals(testStation, radio.getStation());
     }
 
     @Test
-    void shouldSetStationWithError(){
+    void shouldSetStationMin() {
         Radio radio = new Radio();
-        assertThrows(IllegalArgumentException.class, () -> radio.setStation(777));
+        int testStation = 0;
+        radio.setStation(testStation);
+        assertEquals(testStation, radio.getStation());
+    }
+
+    @Test
+    void shouldSetStationMax() {
+        Radio radio = new Radio();
+        int testStation = 9;
+        radio.setStation(testStation);
+        assertEquals(testStation, radio.getStation());
+    }
+
+    @Test
+    void shouldSetStationWithErrorBelowMinRange() {
+        Radio radio = new Radio();
+        assertThrows(IllegalArgumentException.class, () -> radio.setStation(-1));
+    }
+
+    @Test
+    void shouldSetStationWithErrorAboveMaxRange() {
+        Radio radio = new Radio();
+        assertThrows(IllegalArgumentException.class, () -> radio.setStation(10));
     }
 }
