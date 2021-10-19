@@ -1,5 +1,12 @@
 package ru.netology;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@NoArgsConstructor
+@Getter
+@Setter
 public class Radio {
 
     private int stationsAmount = 10;
@@ -10,9 +17,6 @@ public class Radio {
     private int currentStation;
     private int currentVolume;
 
-    public Radio() {
-    }
-
     public Radio(int stationsAmount, int currentStation, int currentVolume) {
         this.stationsAmount = stationsAmount;
         this.currentStation = currentStation;
@@ -20,62 +24,10 @@ public class Radio {
         this.maxStation = stationsAmount - 1;
     }
 
-    public int getStationsAmount() {
-        return stationsAmount;
-    }
-
-    public void setStationsAmount(int stationsAmount) {
-        this.stationsAmount = stationsAmount;
-    }
-
-    public int getMinStation() {
-        return minStation;
-    }
-
-    public void setMinStation(int minStation) {
-        this.minStation = minStation;
-    }
-
-    public int getMaxStation() {
-        return maxStation;
-    }
-
-    public void setMaxStation(int maxStation) {
-        this.maxStation = maxStation;
-    }
-
-    public int getMinVolume() {
-        return minVolume;
-    }
-
-    public void setMinVolume(int minVolume) {
-        this.minVolume = minVolume;
-    }
-
-    public int getMaxVolume() {
-        return maxVolume;
-    }
-
-    public void setMaxVolume(int maxVolume) {
-        this.maxVolume = maxVolume;
-    }
-
-    public int getCurrentStation() {
-        return currentStation;
-    }
-
     public void setCurrentStation(int currentStation) {
         if (currentStation >= minStation && currentStation <= maxStation) {
             this.currentStation = currentStation;
         }
-    }
-
-    public int getCurrentVolume() {
-        return currentVolume;
-    }
-
-    public void setCurrentVolume(int currentVolume) {
-        this.currentVolume = currentVolume;
     }
 
     public void increaseVolume() {
